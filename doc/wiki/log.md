@@ -34,3 +34,7 @@
 - Replaced the gold/violet accent direction with a cool silver palette on graphite and blue-black surfaces.
 - Updated shared tokens and component-level hardcoded animation/detail colors.
 - `npm run build` passed; visual browser QA was not run in this session.
+
+## [2026-09-29] fix | Footer alignment
+
+- Centrate verticalmente e orizzontalmente le aree del footer di AD LETTERS, inclusi brand, sede, copyright e link.

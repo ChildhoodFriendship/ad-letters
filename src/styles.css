@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+:root {
+  --coal: #090b10;
+  --paper: #f3f5f7;
+  --smoke: #9aa4b2;
+  --accent: #c7d0dc;
+  --accent-muted: #8491a3;
+  --cyan: #e3e9f0;
+  --forest: #111827;
+  --line: #273044;
+}
+* { box-sizing: border-box; }
+html { background: var(--coal); scroll-behavior: smooth; }
+body { background: var(--coal); color: var(--paper); font-family: 'DM Sans', system-ui, sans-serif; margin: 0; }
+body, button, input, textarea { font-family: 'DM Sans', system-ui, sans-serif; }
+::selection { background: var(--accent); color: var(--coal); }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }

@@ -1,0 +1,11 @@
+:host { display: block; }
+@media (prefers-reduced-motion: no-preference) { .contact { animation: contact-glow 5s ease-in-out infinite alternate; } .contact-link span { display: inline-block; transition: transform .25s ease; } .contact-link:hover span { transform: translate(5px, -5px); } }
+@keyframes contact-glow { from { box-shadow: 0 0 0 #c7d0dc00; } to { box-shadow: 0 0 55px #c7d0dc20; } }
+.contact { background: var(--accent); color: var(--coal); margin: 0 auto 28px; max-width: 1156px; padding: 110px 12%; }
+.eyebrow { color: #202731; font-size: .65rem; font-weight: 700; letter-spacing: .22em; margin: 0 0 24px; text-transform: uppercase; }
+h2 { font-family: Georgia, serif; font-size: clamp(3.2rem, 7vw, 6.5rem); font-weight: 400; letter-spacing: -.1em; line-height: .83; margin: 0; }
+h2 em { color: #394352; font-style: italic; }
+.contact-copy { color: #4d5868; font-size: .9rem; line-height: 1.65; margin: 38px 0 28px; max-width: 390px; }
+.contact-link { border-bottom: 1px solid var(--coal); color: var(--coal); display: inline-flex; font-size: 1rem; font-weight: 700; gap: 22px; padding-bottom: 9px; text-decoration: none; }
+.contact-link span { font-size: 1.2rem; }
+@media (max-width: 650px) { .contact { margin-left: 20px; margin-right: 20px; padding: 75px 28px; } }

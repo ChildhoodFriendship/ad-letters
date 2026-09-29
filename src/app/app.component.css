@@ -1,0 +1,9 @@
+:host { display: block; }
+.page-shell { overflow: hidden; }
+main { display: block; }
+.ticker { background: var(--accent); color: var(--coal); overflow: hidden; padding: 12px 0 10px; transform: rotate(-1.1deg) scale(1.03); }
+.ticker-track { align-items: center; animation: ticker-move 22s linear infinite; display: flex; gap: 34px; min-width: max-content; white-space: nowrap; }
+.ticker span { font-family: Georgia, serif; font-size: .82rem; letter-spacing: .16em; }
+.ticker b { font-size: .7rem; font-weight: 400; }
+@keyframes ticker-move { from { transform: translateX(0); } to { transform: translateX(-35%); } }
+@media (prefers-reduced-motion: reduce) { .ticker-track { animation-play-state: paused; } }

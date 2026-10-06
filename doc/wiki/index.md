@@ -1,42 +1,22 @@
-# AdLetters Wiki Index
+# Wiki del progetto AdLetters
 
-> Catalog of project knowledge. Start here. Last updated: 2026-09-29 | Total pages: 10
+Mappa compatta della documentazione verificata. Aggiornata: 2026-10-06.
 
-## Projects
+## Pagine principali
 
-- [[projects/ad-letters]]
+- [Schema](SCHEMA.md) — formato, evidenza, confidenza e manutenzione.
+- [Guida agenti](agent-guide.md) — workflow, convenzioni e verifiche.
+- [Stato corrente](current-status.md) — superficie implementata, gap e baseline.
+- [Storico](log.md) — modifiche documentali e decisioni rilevanti.
 
-## Architecture
+## Progetto
 
-- [[architecture/system-architecture]]
+- [AdLetters](projects/ad-letters.md) — scopo, configurazione, struttura e vincoli.
 
-## Modules and APIs
+## Moduli
 
-- [[modules/application-shell]]
+- [Catalogo componenti](modules/component-catalog.md) — componenti standalone e dati locali.
 
-## Decisions
+## Bug
 
-No decision records yet.
-
-## Workflows and Runbooks
-
-- [[runbooks/local-development]]
-
-## Bugs and Debugging
-
-No durable bug records yet.
-
-## Concepts and Queries
-
-No maintained concept or query pages yet.
-
-## Core guidance and status
-
-- [[README]]
-- [[SCHEMA]]
-- [[agent-guide]]
-- [[current-status]]
-- [[token-usage]]
-- [[log]]
-
-The page count includes the ten indexed Markdown content pages above and excludes templates and placeholder files.
+- `bugs/` — nessuna scheda di bug durevole presente; `.gitkeep` mantiene la cartella.

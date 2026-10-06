@@ -1,53 +1,42 @@
 ---
-title: Current status — AD LETTERS tattoo portfolio
-created: 2026-09-29
-updated: 2026-09-29
-type: query
-tags: [project, testing, documentation]
-project: ad-letters
+title: Stato corrente — AdLetters
+updated: 2026-10-06
+type: status
 status: active
-confidence: high
-sources: [package.json, src/app/app.component.ts, src/app/components, src/styles.css, src/app/app.component.spec.ts]
+confidence: medium
+sources: [package.json, angular.json, src/app/app.component.ts, src/app/app.component.html, src/app/components, src/styles.css, src/app/app.component.spec.ts]
 ---
 
-# Current status — AdLetters
+# Stato corrente — AdLetters
 
-> Snapshot date: 2026-09-29. This page records repository evidence, not a release certification.
+Snapshot del 2026-10-06: descrive evidenze del repository, non una certificazione di rilascio.
 
-## Current milestone
+## Baseline
 
-**M1 — Tattoo portfolio base implemented.** The Angular starter screen has been replaced with a responsive one-page portfolio for Adrian, whose tattoo nickname is AD LETTERS.
+| Area | Stato verificabile |
+|---|---|
+| Framework | Angular 19 standalone, TypeScript 5.7, RxJS 7.8 |
+| Superficie | Landing page one-page composta da header, hero, servizi, processo, lavori, contatti e footer |
+| Routing | `Routes` vuoto; la navigazione è interna alla pagina |
+| Rendering | Browser bootstrap e SSR Angular/Express configurati; prerender abilitato |
+| Dati | Array locali `ServiceItem` e `WorkItem`; nessun servizio/API/CMS |
+| Asset | Favicon locale e immagini remote Unsplash temporanee |
+| Test | Spec Jasmine per creazione, sezioni principali e brand |
 
-## Implemented surface
+## Verifica documentata
 
-- Standalone `AppComponent` composes header, hero, tattoo services, approach, selected work, booking CTA, and footer sections.
-- Each landing-page section is an independent standalone component under `src/app/components/`.
-- Responsive CSS tokens and layout are defined in `src/styles.css` and adjacent component styles.
-- The visual system uses near-black graphite surfaces, cool silver accents, slate-blue contrast panels, and warm-white typography; the previous gold accent has been removed.
-- Temporary project imagery uses remote Unsplash URLs and must be replaced with approved assets before production.
-- Contact CTA currently uses a placeholder email address; no backend form integration exists.
+Verificata il 2026-10-06 su questo working tree:
 
-## Verification snapshot
+- `npm run build`: **pass**; bundle browser/server generati e 1 route prerenderizzata.
+- `npm run test -- --watch=false --browsers=ChromeHeadless`: **pass**; 3 test Jasmine superati.
+- `npm run lint`: **non disponibile**; lo script non è dichiarato.
 
-| Check | Result | Evidence |
-|---|---|---|
-| `npm run build` | **Pass** | Browser/server bundles generated; one static route prerendered. |
-| `npm run test -- --watch=false --browsers=ChromeHeadless` | **Pass** | 3 Jasmine tests passed. |
-| `curl http://127.0.0.1:4200/` | **Pass** | Dev server returned the application shell containing `<app-root>`. |
-| `npm run lint` | **Not available** | No `lint` script is declared in `package.json`. |
+- Il browser QA a dimensioni desktop/mobile e la verifica del server SSR in esecuzione restano controlli manuali.
 
-## Known gaps
+## Gap aperti
 
-- Visual QA on real desktop/mobile browsers has not been performed in this session.
-- Copy, imagery, social links, brand identity, and contact destination are provisional.
-- Navigation is implemented as same-page anchors; there are no feature routes yet.
-- No CMS, API, analytics, form provider, or production deployment configuration is present.
-
-## Next evidence to add
-
-1. Replace temporary imagery and placeholder contact/social destinations.
-2. Confirm approved brand copy, typography, and visual assets.
-3. Add a real contact flow only after the owner supplies its provider/configuration.
-4. Perform manual browser checks at desktop and mobile widths.
-
-Related pages: [[projects/ad-letters]], [[architecture/system-architecture]], [[modules/application-shell]], [[runbooks/local-development]], and [[agent-guide]].
+- Copy, immagini, link social, identità finale e destinazione del contatto sono ancora provvisori o da confermare.
+- Le immagini remote dipendono da rete e da URL esterni.
+- Non sono presenti backend, form provider, analytics, CMS o configurazione di deployment.
+- Va chiarita la coerenza del naming di brand tra `AD LETTERS` nei contenuti/test e `NOIR INK` nel titolo interno di `AppComponent`.
+- Prima del rilascio servono asset approvati, flusso di contatto reale e smoke test browser.

@@ -1,57 +1,45 @@
 ---
-title: AdLetters
-created: 2026-09-29
-updated: 2026-09-29
+title: Progetto AdLetters
+updated: 2026-10-06
 type: project
-tags: [project, deployment, testing]
-project: ad-letters
 status: active
 confidence: high
-sources: [package.json, angular.json, README.md, src/main.ts, src/main.server.ts, src/server.ts]
+sources: [package.json, angular.json, README.md, src/main.ts, src/main.server.ts, src/server.ts, src/app/app.config.ts, src/app/app.routes.ts]
 ---
 
-# AdLetters
+# Progetto AdLetters
 
-## Purpose
+## Scopo e perimetro
 
-The repository contains an Angular one-page tattoo portfolio for Adrian, whose tattoo nickname is AD LETTERS.
+Applicazione Angular one-page per una landing/portfolio. Il repository contiene la UI e la configurazione SSR; non contiene backend, persistenza o integrazioni di contatto.
 
-## Repository
+## Configurazione
 
-- Repository path: current repository root
-- Main branch at snapshot: `master`
-- Build: `npm run build`
-- Test: `npm run test -- --watch=false --browsers=ChromeHeadless`
-- Development server: `npm start`
-- SSR server after build: `npm run serve:ssr:ad-letters`
+| Voce | Valore |
+|---|---|
+| Package | `ad-letters`, versione `0.0.0` |
+| Entry browser | `src/main.ts` |
+| Entry SSR | `src/main.server.ts`, `src/server.ts` |
+| Root component | `src/app/app.component.ts` |
+| Routes | `src/app/app.routes.ts`, attualmente vuoto |
+| Build | `npm run build` |
+| Dev server | `npm start` (`ng serve`) |
+| Test | `npm run test -- --watch=false --browsers=ChromeHeadless` |
+| SSR compilato | `npm run serve:ssr:ad-letters` |
+| Output | `dist/ad-letters` |
 
-## System shape
+## Architettura runtime
 
-- Browser entry point: `src/main.ts`
-- Server entry point: `src/server.ts`
-- Root component: `src/app/app.component.ts`
-- Routes: `src/app/app.routes.ts` (currently empty)
-- Architecture: [[../architecture/system-architecture]]
-- Module: [[../modules/application-shell]]
+- `bootstrapApplication` avvia `AppComponent` nel browser.
+- `AppComponent` compone sette componenti di sezione e un ticker inline.
+- Angular prerender/SSR usa Express e `CommonEngine`; gli asset browser sono serviti con cache `1y`.
+- `provideClientHydration(withEventReplay())` abilita hydration lato client.
+- Gli stili globali sono in `src/styles.css`; gli stili specifici sono accanto ai componenti.
 
-## Local development
+## Vincoli e integrazioni
 
-1. Install dependencies with the repository's package manager.
-2. Start the development server with `npm start`.
-3. Build with `npm run build`.
-4. Run headless tests with `npm run test -- --watch=false --browsers=ChromeHeadless`.
-
-## Deployment and operations
-
-No repository-verifiable deployment procedure, environment matrix, health check, or rollback contract is present. The built SSR server can be started through the declared npm script; production hosting details remain unverified.
-
-## Known constraints and open questions
-
-- Product requirements and user flows are not present in the inspected repository.
-- No application routes or project-specific service boundaries are currently defined.
-- Browser/manual smoke behavior is not covered by the automated baseline.
-
-## Evidence
-
-- `package.json`, `angular.json`, `src/main.ts`, `src/main.server.ts`, `src/server.ts`
-- `src/app/app.component.spec.ts`
+- Il contenuto è locale e statico; `ServiceItem` e `WorkItem` sono interfacce locali ai rispettivi componenti.
+- Le immagini dei lavori sono remote e temporanee; la produzione richiede asset approvati e una decisione sul loro hosting.
+- La pagina usa anchor interne e non ha route applicative.
+- La procedura di deployment, health check e rollback non è definita nel repository.
+- Non sono presenti segreti o configurazioni esterne da documentare.

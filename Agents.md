@@ -1,6 +1,6 @@
 # Agent instructions
 
-This repository's durable documentation and operating agreement live in [`doc/wiki/`](doc/wiki/README.md). Read the wiki before changing code, especially:
+This repository's durable documentation and operating agreement live in [`doc/wiki/`](doc/wiki/index.md). Read the wiki before changing code, especially:
 
 1. [`doc/wiki/SCHEMA.md`](doc/wiki/SCHEMA.md) — documentation structure, evidence, confidence, and maintenance rules;
 2. [`doc/wiki/index.md`](doc/wiki/index.md) — page map;

@@ -1,40 +1,16 @@
-# Coding Project Wiki Log
+# Storico wiki
 
-> Append-only. Format: `## [YYYY-MM-DD] action | subject`
-> Actions: `create`, `update`, `verify`, `archive`, `lint`, `query`.
+Formato: `## [YYYY-MM-DD] azione | oggetto`. Voci sintetiche e append-only.
 
-## [2026-09-29] create | AdLetters wiki rebuilt
+## [2026-10-06] migrate | Wiki snella Hermes
 
-- Reorganized the reference document model under `doc/wiki/`.
-- Replaced project-specific claims with evidence from the current Angular repository.
-- Added project, architecture, module, and local-development pages; decision, bug, and raw areas remain empty placeholders.
+- Ridotta `doc/wiki/` alla struttura richiesta: schema, guida agenti, stato, indice, log, catalogo componenti, progetto e cartella bug vuota.
+- Separati i fatti verificabili di AdLetters dalle convenzioni generali della wiki di riferimento.
+- Aggiornato `Agents.md` per puntare alla nuova struttura.
+- Eliminato il file di istruzioni temporaneo `doc/wiki_example/wiki/shortens the guide.txt`.
 
-## [2026-09-29] verify | Repository baseline
+## [2026-10-06] verify | Baseline del progetto
 
-- `npm run build` passed and generated browser/server bundles with one prerendered static route.
-- `npm run test -- --watch=false --browsers=ChromeHeadless` passed with 3 tests.
-- No lint script is declared in `package.json`.
-
-## [2026-09-29] update | Tattoo portfolio direction
-
-- Replaced the Angular starter placeholder with the initial AD LETTERS tattoo portfolio.
-- Added standalone header, hero, services, approach, work, contact, and footer components.
-- Added responsive visual tokens and temporary Unsplash imagery.
-- `npm run build`, headless tests, and a local HTTP smoke check passed.
-
-## [2026-09-29] update | AD LETTERS identity and motion
-
-- Replaced the provisional Noir Ink identity with Adrian's AD LETTERS brand.
-- Localized the landing page in Italian and set the studio location to Piove di Sacco.
-- Corrected the hero image to a tattoo photograph and updated the experience claim to two years.
-- Added the animated specialty ticker, image shine, orbit badge, floating stamp, staggered section entrances, hover lifts, and reduced-motion fallbacks.
-
-## [2026-09-29] update | Dark silver visual palette
-
-- Replaced the gold/violet accent direction with a cool silver palette on graphite and blue-black surfaces.
-- Updated shared tokens and component-level hardcoded animation/detail colors.
-- `npm run build` passed; visual browser QA was not run in this session.
-
-## [2026-09-29] fix | Footer alignment
-
-- Centrate verticalmente e orizzontalmente le aree del footer di AD LETTERS, inclusi brand, sede, copyright e link.
+- `npm run build`: pass; bundle browser/server e una route prerenderizzata.
+- `npm run test -- --watch=false --browsers=ChromeHeadless`: pass; 3 test Jasmine.
+- `git diff --check`: pass; nessuno script lint dichiarato.

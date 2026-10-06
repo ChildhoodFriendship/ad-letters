@@ -1,75 +1,52 @@
 ---
-title: Agents — Working guide
-created: 2026-09-29
-updated: 2026-09-29
-type: query
-tags: [guidance, workflow, documentation, testing, security]
-project: ad-letters
+title: Guida operativa per agenti
+updated: 2026-10-06
+type: guidance
 status: active
 confidence: high
-sources: [SCHEMA.md, current-status.md, token-usage.md, package.json, angular.json, tsconfig.json]
+sources: [Agents.md, package.json, angular.json, tsconfig.json, SCHEMA.md]
 ---
 
-# Agents — Working guide
+# Guida operativa per agenti
 
-This is the operating agreement for coding agents working in AdLetters. The goal is to make each task safe, small, verifiable, and easy for the next agent to resume. The repository-level `Agents.md` must remain aligned with this page.
+## Prima di agire
 
-## 1. Orient before acting
+1. Leggere `SCHEMA.md`, `index.md`, `current-status.md` e le ultime 20–30 righe di `log.md`.
+2. Eseguire `git status --short --branch`; trattare le modifiche già presenti come dell'utente.
+3. Cercare definizione e usi dei simboli interessati e leggere codice, configurazione e test prima di scegliere la soluzione.
+4. Definire outcome, scope, vincoli e controlli di accettazione. Chiedere chiarimenti solo se l'interpretazione cambia file o comportamento.
 
-1. Read [[SCHEMA|SCHEMA]], [[index|index]], [[current-status|current status]], and the latest 20–30 lines of [[log|log]].
-2. Run `git status --short --branch` before changing anything.
-3. Locate exact symbols and usages with targeted searches.
-4. Read relevant source, configuration, and tests before choosing an implementation.
-5. Treat the existing working-tree diff as user-owned unless explicitly asked to change it.
+## Disciplina della modifica
 
-## 2. Execute requests by default
+- Fare il cambiamento minimo coerente; niente refactoring estraneo.
+- Preservare struttura Angular standalone, stile TypeScript/HTML/CSS e confini dei componenti.
+- Non resettare, committare, fare push o riscrivere la storia senza richiesta esplicita.
+- Non copiare segreti o endpoint privati nella repo o nella wiki.
+- Controllare `package.json` prima di aggiungere import o dipendenze.
+- Usare `camelCase` per lo stato frontend; preservare esattamente i nomi dei contratti esterni.
+- Dichiarare modificatori di accesso espliciti quando coerente con lo stile esistente.
+- Mettere ogni nuovo child component in una sottocartella propria.
+- Per ogni nuova funzione aggiungere JSDoc con `@param` e `@returns` quando applicabile; usare graffe negli `if`, anche per una sola istruzione.
+- Mantenere un solo percorso canonico per comportamento, stato, lifecycle o integrazione; prima di introdurre logica realtime, dialog o subscription tracciare chiamanti, side effect, transizioni e cleanup.
+- Separare preparazione UI e persistenza nei futuri flussi di form; tipizzare i risultati dei dialog e non mutare righe selezionate attraverso il dialog.
 
-Treat repository questions as actionable coding requests unless the maintainer explicitly asks only for discussion. Inspect, make the smallest useful change, and verify it. If runtime evidence is unavailable, add only focused diagnostic logging when appropriate; do not add speculative behavior changes.
+## Verifica
 
-## 3. Scope contract
+Eseguire prima i controlli mirati, poi:
 
-Before editing, identify outcome, scope, constraints, and acceptance checks. Choose the smallest coherent implementation when details are open; ask only when interpretations would change files or behavior. Keep unrelated cleanup out of the patch.
+```bash
+npm run build
+npm run test -- --watch=false --browsers=ChromeHeadless
+```
 
-## 4. Source of truth
+`npm run lint` non è dichiarato in `package.json`. Per modifiche UI, eseguire anche uno smoke test manuale con `npm start` quando possibile. Una build riuscita non dimostra il comportamento visivo, SSR in produzione o eventuali integrazioni future.
 
-Use current source/configuration and successful execution first, then build/test/runtime evidence, explicit documentation, wiki claims, and finally labeled inference. A component folder proves code presence, not live behavior or production readiness.
+## Wiki e consegna
 
-## 5. Change discipline
+Dopo una modifica sostanziale aggiornare la pagina pertinente, i link, `index.md` e `log.md`. Prima della consegna eseguire `git status --short --branch` e `git diff --check`.
 
-- Touch only required files and preserve existing Angular/TypeScript patterns.
-- Inspect diffs before editing dirty files; never overwrite unrelated changes.
-- Never reset, commit, push, or rewrite history unless explicitly requested.
-- Never put credentials, tokens, passwords, private keys, or private endpoints in code or wiki.
-- Inspect `package.json` before adding imports or dependencies.
-- Keep frontend naming in `camelCase`; preserve external contract names exactly and map explicitly when needed.
-- Use explicit access modifiers on methods and members where the surrounding Angular style supports it.
-- Put new child components in their own subdirectories.
-- Add comments only where names do not explain non-obvious behavior.
+Il resoconto finale contiene solo:
 
-## 6. Conditional lifecycle and integration rules
-
-When realtime, subscriptions, dialogs, settings flows, or external integrations are introduced, trace every existing mode, lifecycle, caller, and side effect first. Keep one canonical implementation path, clean subscriptions explicitly, and verify transitions and destruction. Do not retain duplicate functions that own the same behavior. For data flows, record `source -> parser -> state -> renderer -> guard` before editing when useful.
-
-For settings-style components, keep UI preparation separate from persistence (`requestEdit`/`requestAdd` versus `submitSave`), keep persistence canonical, type dialog results, and avoid mutating selected rows through dialogs. These are conditional rules for future modules, not claims that such modules currently exist.
-
-## 7. Verification gates
-
-Run narrow checks first, then the project gates:
-
-- `npm run build`
-- `npm run test -- --watch=false --browsers=ChromeHeadless`
-- Manual `npm start` smoke testing when UI behavior changes
-
-There is currently no lint script. Report commands that were not run or are unavailable. A passing build does not prove browser behavior, backend integration, or production readiness.
-
-Final reports contain only:
-
-- **Changed:** files and behavior actually modified;
-- **Verified:** commands and real results;
-- **Blocked/remaining:** failures, warnings, or manual checks still needed.
-
-## 8. Wiki maintenance and handoff
-
-After substantive work, update the relevant page, links, `index.md`, and one concise `log.md` entry. Keep durable guidance here, project facts in project/module pages, temporary focus in `current-status.md`, and history in `log.md`. Before finishing, run `git status --short --branch` and `git diff --check`.
-
-A handoff includes scope, evidence, current state, remaining risk, and one concrete next action.
+- **Changed:** file e comportamento realmente modificati;
+- **Verified:** comandi e risultato reale;
+- **Blocked/remaining:** errori, avvisi o controlli manuali ancora necessari.

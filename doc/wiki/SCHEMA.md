@@ -1,55 +1,41 @@
-# Coding Project Wiki Schema
+# Schema della documentazione
 
-## Purpose
+## Scopo
 
-A durable, searchable knowledge base for software projects. Keep verified facts, architecture, modules/APIs, data contracts, decisions, workflows, operational procedures, and durable debugging knowledge here.
+`doc/wiki/` contiene conoscenza durevole, verificabile e sintetica del progetto. La wiki non sostituisce il codice, i test o la configurazione.
 
-## Conventions
+## Struttura obbligatoria
 
-- File names are lowercase, hyphen-separated, and contain no spaces.
-- Every content page starts with YAML frontmatter and is listed in `index.md`.
-- Use `[[wikilinks]]` and useful outbound links.
-- Update `updated` whenever a page changes.
-- Append every structural or substantive content action to `log.md`.
-- Prefer repository-relative source paths, line ranges, commits, tests, logs, and official documentation.
-- Never store secrets, tokens, passwords, private keys, certificates, or customer configuration.
-- Keep temporary task notes out of durable pages.
-- Keep pages below approximately 200 lines; split deep dives when necessary.
+| Percorso | Contenuto |
+|---|---|
+| `index.md` | Mappa completa delle pagine |
+| `agent-guide.md` | Regole operative per agenti e manutentori |
+| `current-status.md` | Stato verificato, lacune e prossimi riscontri |
+| `log.md` | Storico sintetico delle modifiche documentali e decisioni |
+| `modules/component-catalog.md` | Catalogo di componenti, servizi e utility |
+| `projects/<nome>.md` | Perimetro, configurazione e integrazioni del progetto |
+| `bugs/` | Schede di bug durevoli; vuota finché non esiste una diagnosi verificata |
 
-## Frontmatter
+## Convenzioni
 
-```yaml
----
-title: Page title
-created: YYYY-MM-DD
-updated: YYYY-MM-DD
-type: project | architecture | module | api | decision | workflow | bug | runbook | concept | query
-tags: [project, architecture]
-project: project-slug
-status: active | superseded | resolved | open | archived
-confidence: high | medium | low
-sources: [repository-relative/path, https://example.invalid/docs]
----
-```
+- Nomi file minuscoli, con trattini e senza spazi.
+- Ogni pagina Markdown informativa usa frontmatter YAML con `title`, `updated`, `type`, `status`, `confidence` e `sources`.
+- Ogni pagina va aggiunta a `index.md`; ogni modifica sostanziale va aggiunta a `log.md`.
+- Usare link relativi Markdown; preferire percorsi di repository, simboli, comandi e test come evidenza.
+- Non salvare segreti, credenziali, token, chiavi private, certificati o configurazioni cliente.
+- Tenere le pagine sotto circa 200 righe; eliminare ridondanze e note temporanee.
 
-## Confidence semantics
+## Confidenza
 
-- `high` — directly confirmed by current source/configuration and relevant successful verification.
-- `medium` — supported by source or documentation, but runtime behavior or a complete user flow is not fully verified.
-- `low` — inferred, stale, contradictory, or dependent on missing evidence; state what would verify it.
+- **high**: confermato da codice/configurazione e da una verifica pertinente.
+- **medium**: supportato dal codice, ma runtime, browser, servizi esterni o flusso completo non sono verificati.
+- **low**: inferito, obsoleto o contraddittorio; indicare quale prova manca.
 
-Preserve contradictions instead of silently choosing a convenient claim.
+Quando le fonti divergono, prevalgono: codice/configurazione correnti, output di build/test/runtime, documentazione esplicita, wiki e infine inferenze dichiarate. La presenza di un componente non prova la sua prontezza produttiva.
 
-## Page rules and source precedence
+## Manutenzione
 
-Create pages for projects, important modules/APIs, non-obvious integrations, durable bugs, operational procedures, domain concepts, and architectural decisions. Do not create pages for trivial details. Document repository-owned behavior separately from libraries, generated artifacts, and deployment-specific configuration. Mark unresolved boundaries as open questions.
-
-When sources disagree, use: (1) current executable source/configuration, (2) build/test/runtime evidence, (3) checked-in contracts, (4) explicit documentation, (5) wiki prose, and (6) labeled agent inference. Do not infer external schemas, authorization, rate limits, or deployment contracts from identifiers alone.
-
-## Maintenance
-
-1. Check `index.md` and search for related terms.
-2. Read relevant source, configuration, and tests.
-3. Update the page and useful links.
-4. Update `index.md` and append a concise `log.md` entry.
-5. Include verification evidence and state blocked checks honestly.
+1. Leggere `SCHEMA.md`, `index.md`, `current-status.md` e le ultime righe di `log.md`.
+2. Cercare pagine e simboli correlati prima di modificare.
+3. Aggiornare pagina, link, `index.md` e una voce concisa in `log.md`.
+4. Registrare i comandi eseguiti e i blocchi reali; non trasformare una build riuscita in una garanzia browser o di produzione.

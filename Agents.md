@@ -1,16 +1,18 @@
 # Agent instructions
 
-This repository's durable documentation and operating agreement live in [`doc/wiki/`](doc/wiki/index.md). Read the wiki before changing code, especially:
+This repository's durable documentation and operating agreement live in [`docs/wiki/`](docs/wiki/index.md). Read the wiki before changing code, especially:
 
-1. [`doc/wiki/SCHEMA.md`](doc/wiki/SCHEMA.md) — documentation structure, evidence, confidence, and maintenance rules;
-2. [`doc/wiki/index.md`](doc/wiki/index.md) — page map;
-3. [`doc/wiki/agent-guide.md`](doc/wiki/agent-guide.md) — coding-agent workflow and verification rules;
-4. [`doc/wiki/current-status.md`](doc/wiki/current-status.md) — verified repository baseline;
-5. the latest entries in [`doc/wiki/log.md`](doc/wiki/log.md).
+1. [`docs/wiki/SCHEMA.md`](docs/wiki/SCHEMA.md) — documentation structure, evidence, confidence, and maintenance rules;
+2. [`docs/wiki/index.md`](docs/wiki/index.md) — page map;
+3. [`docs/wiki/agent-guide.md`](docs/wiki/agent-guide.md) — coding-agent workflow and verification rules;
+4. [`docs/wiki/current-status.md`](docs/wiki/current-status.md) — verified repository baseline;
+5. the latest entries in [`docs/wiki/log.md`](docs/wiki/log.md).
 
 ## Repository rules
 
 - Inspect `git status --short --branch` and the relevant source/configuration before editing.
+- Prima di modificare la repo, esegui `git status`. Se ci sono modifiche locali non committate, fermati e informa il maintainer. Se il working tree è pulito, esegui `git fetch` e `git pull --ff-only` sul branch corrente; se il pull fallisce o i branch sono divergenti, mostra lo stato e attendi.
+- Lavora su un branch `hermes/<task>`, non su `main`.
 - Treat pre-existing working-tree changes as user-owned.
 - Make the smallest coherent change; do not perform unrelated cleanup.
 - Do not invent behavior, contracts, integrations, or deployment details that are not supported by source, configuration, documentation, or execution evidence.

@@ -4,10 +4,10 @@ Formato: `## [YYYY-MM-DD] azione | oggetto`. Voci sintetiche e append-only.
 
 ## [2026-10-06] migrate | Wiki snella Hermes
 
-- Ridotta `doc/wiki/` alla struttura richiesta: schema, guida agenti, stato, indice, log, catalogo componenti, progetto e cartella bug vuota.
+- Ridotta `docs/wiki/` alla struttura richiesta: schema, guida agenti, stato, indice, log, catalogo componenti, progetto e cartella bug vuota.
 - Separati i fatti verificabili di AdLetters dalle convenzioni generali della wiki di riferimento.
 - Aggiornato `Agents.md` per puntare alla nuova struttura.
-- Eliminato il file di istruzioni temporaneo `doc/wiki_example/wiki/shortens the guide.txt`.
+- Eliminati i file temporanei della wiki di riferimento insieme alla vecchia struttura.
 
 ## [2026-10-06] verify | Baseline del progetto
 

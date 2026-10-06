@@ -2,7 +2,7 @@
 
 ## Scopo
 
-`doc/wiki/` contiene conoscenza durevole, verificabile e sintetica del progetto. La wiki non sostituisce il codice, i test o la configurazione.
+`docs/wiki/` contiene conoscenza durevole, verificabile e sintetica del progetto. La wiki non sostituisce il codice, i test o la configurazione.
 
 ## Struttura obbligatoria
 

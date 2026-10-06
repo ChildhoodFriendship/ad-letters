@@ -12,9 +12,11 @@ sources: [Agents.md, package.json, angular.json, tsconfig.json, SCHEMA.md]
 ## Prima di agire
 
 1. Leggere `SCHEMA.md`, `index.md`, `current-status.md` e le ultime 20–30 righe di `log.md`.
-2. Eseguire `git status --short --branch`; trattare le modifiche già presenti come dell'utente.
-3. Cercare definizione e usi dei simboli interessati e leggere codice, configurazione e test prima di scegliere la soluzione.
-4. Definire outcome, scope, vincoli e controlli di accettazione. Chiedere chiarimenti solo se l'interpretazione cambia file o comportamento.
+2. Eseguire `git status`. Se ci sono modifiche locali non committate, fermarsi e informare il maintainer.
+3. Se il working tree è pulito, eseguire `git fetch` e `git pull --ff-only` sul branch corrente. Se il pull fallisce o i branch sono divergenti, mostrare lo stato e attendere.
+4. Lavorare su un branch `hermes/<task>`, non su `main`.
+5. Cercare definizione e usi dei simboli interessati e leggere codice, configurazione e test prima di scegliere la soluzione.
+6. Definire outcome, scope, vincoli e controlli di accettazione. Chiedere chiarimenti solo se l'interpretazione cambia file o comportamento.
 
 ## Disciplina della modifica
 
